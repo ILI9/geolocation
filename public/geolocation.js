@@ -1,14 +1,12 @@
 var xhr = new XMLHttpRequest();
 
 var container = document.querySelector('.container');
-var btnGeo = document.querySelector('.button.geo');
 var btnAnimal = document.querySelector('.btn-animal');
 var input = document.querySelector('input');
 var geoloc = document.createElement("div");
 geoloc.setAttribute("class", 'test');
 
-btnGeo.addEventListener('click', callPosition);
-// btnAnimal.addEventListener('click', favouriteAnimal);
+btnAnimal.addEventListener('click', callPosition);
 
 function callPosition () {
     if ("geolocation" in navigator) {
@@ -16,7 +14,8 @@ function callPosition () {
         navigator.geolocation.getCurrentPosition(async function (position) {
             var lat = position.coords.latitude;
             var long = position.coords.longitude;
-            var apiData = { lat, long };
+            var inputText = document.getElementById('animal').value;
+            var apiData = { lat, long, inputText };
             geoloc.innerHTML = 'lat ' + '' + lat + '&emsp;' + 'long ' + '' + long;
     
             var options = {

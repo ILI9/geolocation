@@ -27,20 +27,21 @@ app.post('/api', function (req, res) {
     res.json({
         status: 'succes',
         latitude: data.lat,
-        longitude: data.long
+        longitude: data.long,
+        animal: data.inputText
     })
     // console.log(dataBase);
 });
 
 
-app.post('/animalo', urlencodedParser, function (req, res) {
-    var inputText = req.body.animal;
+// app.post('/animalo', urlencodedParser, function (req, res) {
+//     var inputText = req.body.animal;
 
-    dataBase.insert(inputText);
+//     dataBase.insert(inputText);
     
-    res.redirect('/');
-    console.log(req.body.animal);
-});
+//     res.redirect('/');
+//     console.log(req.body.animal);
+// });
 
 
 // respond with "hello world" when a GET request is made to the homepage
