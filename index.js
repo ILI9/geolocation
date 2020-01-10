@@ -55,17 +55,4 @@ app.post('/api', function (req, res) {
 //     }).pipe(res)
 // });
 
-// app.get('/geo', function(req, res) {
-//     fs.readFile('./index.html', function (error, data) {
-//         if (error) {
-//             res.writeHead(404);
-//             res.write('Whoops! File not found!');
-//         } else {
-//             res.write(data);
-//         }
-//         res.end();
-//     });
-// });
-
-
 module.exports = app;
