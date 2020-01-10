@@ -7,7 +7,6 @@ require('dotenv').config();
 const request = require('request');
 const fs = require('fs');
 const https = require('https');
-const OMDB_apiKey = 'd82d4a5e';
 
 const dataBase = new Datastore('database.db');
 dataBase.loadDatabase();
@@ -48,20 +47,10 @@ app.post('/api', function (req, res) {
 });
 
 
-// app.post('/animalo', urlencodedParser, function (req, res) {
-//     var inputText = req.body.animal;
-
-//     dataBase.insert(inputText);
-    
-//     res.redirect('/');
-//     console.log(req.body.animal);
-// });
-
-
 // respond with "hello world" when a GET request is made to the homepage
 // app.get('/', function(req, res) {
 //     request({
-//         uri: `http://www.omdbapi.com/?apikey=${OMDB_apiKey}&s=gatsby`,
+//         uri: `http://www.omdbapi.com/?apikey=${process.env.OMDB_apiKey}&s=gatsby`,
 //         s: 'gatsby'
 //     }).pipe(res)
 // });
