@@ -27,3 +27,6 @@ yarn-error.log*
 
 #my intern wiki
 wiki.md
+
+#dotenv keys
+.env

@@ -1,13 +1,36 @@
-var xhr = new XMLHttpRequest();
-
 var container = document.querySelector('.container');
 var btnAnimal = document.querySelector('.btn-animal');
+var btnWeather = document.querySelector('.weather');
 var input = document.querySelector('input');
 var geoloc = document.createElement("div");
 geoloc.setAttribute("class", 'test');
 
 btnAnimal.addEventListener('click', callPosition);
+btnWeather.addEventListener('click', callWeather);
 
+// get the weather api, and send latitute and lonngitude to the server
+function callWeather () {
+    console.log('dentro weather');
+    if ("geolocation" in navigator) {
+        /* la geolocalizzazione è disponibile */
+        console.log('dentro geoloc');
+        navigator.geolocation.getCurrentPosition(async function (position) {
+            var lat = position.coords.latitude;
+            var long = position.coords.longitude;
+            options = {
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            var resp = await fetch(`/tempo/${lat},${long}`, options);
+            var data = await resp.json();
+            console.log(data);
+        });
+    }
+} 
+
+//post the input field, call latitude and long and show it to the document
 function callPosition () {
     if ("geolocation" in navigator) {
         /* la geolocalizzazione è disponibile */
@@ -36,18 +59,3 @@ function callPosition () {
     }
     container.appendChild(geoloc);
 }
-
-// function favouriteAnimal () {
-//     xhr.open("POST", '/animal', true);
-//     //Send the proper header information along with the request
-//     // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-//     xhr.onreadystatechange = function() { // Call a function when the state changes.
-//         if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-//             // Request finished. Do processing here.
-//             console.log('btnAnimal');
-            
-//         }
-//     }
-// }
-
