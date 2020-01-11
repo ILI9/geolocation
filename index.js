@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const Datastore = require('nedb');
-const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const port = process.env.PORT || 3000;
 require('dotenv').config();
@@ -10,7 +9,7 @@ const dataBase = new Datastore('database.db');
 dataBase.loadDatabase();
 
 app.listen(port, () => {
-    console.log(`running on port 3000 ${process.env.PORT}`);
+    console.log(`running on port ${process.env.PORT}`);
 });
 
 // render static file
