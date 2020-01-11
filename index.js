@@ -3,21 +3,15 @@ const app = express();
 const Datastore = require('nedb');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
+const port = process.env.PORT || 3000;
 require('dotenv').config();
-const request = require('request');
-const fs = require('fs');
-const https = require('https');
 
 const dataBase = new Datastore('database.db');
 dataBase.loadDatabase();
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-// app.listen(3000, () => {
-//     console.log(`running on port 3000`);
-// });
-
-
+app.listen(port, () => {
+    console.log(`running on port 3000 ${process.env.PORT}`);
+});
 
 // render static file
 app.use(express.static('public'));
